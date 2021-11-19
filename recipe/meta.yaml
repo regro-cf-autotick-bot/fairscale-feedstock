@@ -37,11 +37,14 @@ requirements:
     # - pytorch-cpu                     # [cuda_compiler_version == "None"]
 
 test:
-  # requires:
-  #   - pytest
-  #   - parameterized
-  # source_files:
-  #   - tests
+  requires:
+    - pytest
+    - parameterized
+  source_files:
+    - tests
+  commands:
+    # TODO: re-enable tests for unix
+    - pytest tests  # [linux]
   imports:
     - fairscale
     - fairscale.nn
@@ -51,8 +54,6 @@ test:
     - fairscale.nn.pipe.balance
     - fairscale.nn.pipe.skip
     - fairscale.optim
-  # commands:
-  #   - pytest tests
 
 about:
   home: https://github.com/facebookresearch/fairscale
