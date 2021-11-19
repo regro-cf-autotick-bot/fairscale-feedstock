@@ -43,7 +43,8 @@ test:
   source_files:
     - tests
   commands:
-    - pytest tests
+    # TODO: re-enable tests for unix
+    - pytest tests  # [linux]
   imports:
     - fairscale
     - fairscale.nn
