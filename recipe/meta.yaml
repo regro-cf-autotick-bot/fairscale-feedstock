@@ -1,4 +1,4 @@
-{% set version = "0.4.2" %}
+{% set version = "0.4.3" %}
 
 package:
   name: fairscale
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/facebookresearch/fairscale/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: e3cd04c9928fd43822cc4f92b0ab55c2fd1d44645010100e6334075fa401a12c
+  sha256: 2361954ebc902afd4a23a48825af6efe143b30730079730d949539f87e8c513b
 
 build:
   number: 0
