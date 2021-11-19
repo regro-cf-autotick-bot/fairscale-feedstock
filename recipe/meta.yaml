@@ -1,4 +1,5 @@
 {% set version = "0.4.3" %}
+{% set torch_version = "1.10" %}
 
 package:
   name: fairscale
@@ -10,31 +11,29 @@ source:
 
 build:
   number: 0
-  # no pytorch on windows
+  # no pytorch on windows in conda-forge, see
+  # https://github.com/conda-forge/pytorch-cpu-feedstock/issues/32
   skip: true  # [win]
-  script:
-    # - export BUILD_CUDA_EXTENSIONS=1  # [cuda_compiler_version != "None"]
-    - {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
     - sysroot_linux-64 2.17           # [linux]
     # compilers only needed for CUDA extensions
-    # - {{ compiler('cxx') }}           # [cuda_compiler_version != "None"]
-    # - {{ compiler('cuda') }}          # [cuda_compiler_version != "None"]
+    - {{ compiler('cxx') }}           # [cuda_compiler_version != "None"]
+    - {{ compiler('cuda') }}          # [cuda_compiler_version != "None"]
   host:
     - python
     - pip
     # host-dependency only needed for compiling CUDA extensions
-    # - pytorch >=1.8.0                 # [cuda_compiler_version != "None"]
-    # - pytorch-gpu                     # [cuda_compiler_version != "None"]
+    - pytorch {{ torch_version }}.*
+    - pytorch-gpu                     # [cuda_compiler_version != "None"]
   run:
     - python
-    # upstream uses >=1.6, but there are some issues under py3.9
-    # with the 1.7 builds from conda-forge
-    - pytorch >=1.8.0
-    # - pytorch-gpu                     # [cuda_compiler_version != "None"]
-    # - pytorch-cpu                     # [cuda_compiler_version == "None"]
+    # due to lack of ABI, we need to fix build-time and runtime to the same version
+    # (waiting for conda-forge/conda-forge-pinning-feedstock#1890)
+    - pytorch {{ torch_version }}.*
+    - pytorch-gpu                     # [cuda_compiler_version != "None"]
+    - pytorch-cpu                     # [cuda_compiler_version == "None"]
 
 test:
   requires:
