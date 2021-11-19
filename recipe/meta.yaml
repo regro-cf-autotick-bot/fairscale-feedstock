@@ -10,11 +10,9 @@ source:
 
 build:
   number: 0
-  # no pytorch on windows
+  # no pytorch on windows in conda-forge, see
+  # https://github.com/conda-forge/pytorch-cpu-feedstock/issues/32
   skip: true  # [win]
-  script:
-    - export BUILD_CUDA_EXTENSIONS=1  # [cuda_compiler_version != "None"]
-    - {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
