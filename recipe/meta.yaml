@@ -1,4 +1,4 @@
-{% set version = "0.4.4" %}
+{% set version = "0.4.5" %}
 {% set torch_version = "1.10" %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/facebookresearch/fairscale/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 5dc2534f79b6364fd1567adc8d372e8f72b60b2ff399a1be46630d6d90c1b825
+  sha256: 0b251abb1b0d954ee4c85dc4b86f3430df1a673e63997aaa29d10da510e3d65d
 
 build:
   number: 0
