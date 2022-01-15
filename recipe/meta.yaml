@@ -41,6 +41,7 @@ test:
   requires:
     - pytest
     - parameterized
+    - scikit-learn
   source_files:
     - tests
   commands:
