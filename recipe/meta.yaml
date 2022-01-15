@@ -42,6 +42,7 @@ test:
     - pytest
     - parameterized
     - scikit-learn
+    - torchvision
   source_files:
     - tests
   commands:
