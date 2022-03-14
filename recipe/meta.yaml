@@ -41,8 +41,7 @@ requirements:
 
 test:
   requires:
-    # TODO: remove pytest bound once upstream supports it
-    - pytest <7
+    - pytest
     - parameterized
     - scikit-learn
     - torchvision
