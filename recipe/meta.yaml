@@ -29,8 +29,7 @@ requirements:
   host:
     - python
     - pip
-    # host-dependency only needed for compiling CUDA extensions
-    - pytorch                                # [cuda_compiler_version != "None"]
+    - pytorch
     - pytorch =*={{ torch_proc_type }}*      # [cuda_compiler_version != "None"]
   run:
     - python
