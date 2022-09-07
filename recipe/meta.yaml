@@ -14,7 +14,7 @@ build:
   number: 0
   # no pytorch on windows in conda-forge, see
   # https://github.com/conda-forge/pytorch-cpu-feedstock/issues/32
-  skip: true  # [win]
+  skip: true  # [win or py<38]
   string: cuda{{ cuda_compiler_version | replace('.', '') }}py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version != "None"]
   string: cpu_py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version == "None"]
 
