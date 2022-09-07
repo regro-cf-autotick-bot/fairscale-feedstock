@@ -33,6 +33,8 @@ requirements:
     - pytorch =*={{ torch_proc_type }}*      # [cuda_compiler_version != "None"]
   run:
     - python
+    - pgzip
+    - pygit2
     - __cuda  # [cuda_compiler_version != "None"]
   run_constrained:
     # additional run constraint to the one from the (version-only) run_export;
