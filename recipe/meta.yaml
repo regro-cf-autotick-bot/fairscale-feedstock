@@ -1,4 +1,4 @@
-{% set version = "0.4.6" %}
+{% set version = "0.4.9" %}
 # see github.com/conda-forge/conda-forge.github.io/issues/1059 for naming discussion
 {% set torch_proc_type = "cuda" if cuda_compiler_version != "None" else "cpu" %}
 
@@ -8,15 +8,15 @@ package:
 
 source:
   url: https://github.com/facebookresearch/fairscale/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 776b08336a524fb90867365af52307870cc7dc95c3d7b5cf2577f0dcdb647e36
+  sha256: 67c55450f106415702e794c5719092cf5626996f0072ad81ddc51947d09002c7
 
 build:
-  number: 5
+  number: 0
   # no pytorch on windows in conda-forge, see
   # https://github.com/conda-forge/pytorch-cpu-feedstock/issues/32
   skip: true  # [win]
   string: cuda{{ cuda_compiler_version | replace('.', '') }}py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version != "None"]
-  string: cpu_py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}                                                # [cuda_compiler_version == "None"]
+  string: cpu_py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version == "None"]
 
 requirements:
   build:
