@@ -48,8 +48,8 @@ test:
   source_files:
     - tests
   commands:
-    # TODO: re-enable tests for unix
-    - pytest tests  # [linux]
+    # TODO: re-enable tests for osx
+    - pytest tests -k "not fair_dev"  # [linux]
   imports:
     - fairscale
     - fairscale.nn
