@@ -10,10 +10,8 @@ source:
   url: https://github.com/facebookresearch/fairscale/archive/refs/tags/v{{ version }}.tar.gz
   sha256: cdc2327ea1c1c19cf191c621de595e0090602bf43655627bf3d2a7fedb542639
   patches:
-    # backport facebookresearch/fairscale#1078 to be able to run test suite
-    - patches/0001-chore-move-fair_dev-into-fairscale-1078.patch
     # backport facebookresearch/fairscale#1097 to be able to run test suite
-    - patches/0002-add-fair_dev-packages-1097.patch
+    - patches/0001-add-fair_dev-packages-1097.patch
 
 build:
   number: 0
