@@ -1,4 +1,4 @@
-{% set version = "0.4.11" %}
+{% set version = "0.4.13" %}
 # see github.com/conda-forge/conda-forge.github.io/issues/1059 for naming discussion
 {% set torch_proc_type = "cuda" if cuda_compiler_version != "None" else "cpu" %}
 
@@ -8,10 +8,7 @@ package:
 
 source:
   url: https://github.com/facebookresearch/fairscale/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: cdc2327ea1c1c19cf191c621de595e0090602bf43655627bf3d2a7fedb542639
-  patches:
-    # backport facebookresearch/fairscale#1097 to be able to run test suite
-    - patches/0001-add-fair_dev-packages-1097.patch
+  sha256: 0418cb5bb560e127764afa28578e3fc3679ba8afa31fee6b7447e5e3d39c8c4b
 
 build:
   number: 0
