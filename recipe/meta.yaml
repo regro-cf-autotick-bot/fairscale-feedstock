@@ -45,16 +45,6 @@ requirements:
     - pytorch =*={{ torch_proc_type }}*
 
 test:
-  requires:
-    - pytest
-    - parameterized
-    - scikit-learn
-    - torchvision
-  source_files:
-    - tests
-  commands:
-    # TODO: re-enable tests for unix
-    - pytest tests  # [linux]
   imports:
     - fairscale
     - fairscale.nn
@@ -64,6 +54,18 @@ test:
     - fairscale.nn.pipe.balance
     - fairscale.nn.pipe.skip
     - fairscale.optim
+  requires:
+    - pytest
+    - parameterized
+    - scikit-learn
+    - torchvision
+  source_files:
+    - tests
+  commands:
+    {% set tests_to_skip = "_not_a_real_test" %}
+    # flaky on osx due to timing sensitivity
+    {% set tests_to_skip = tests_to_skip + " or test_balance_by_time" %}  # [osx]
+    - pytest tests -k "not ({{ tests_to_skip }})"
 
 about:
   home: https://github.com/facebookresearch/fairscale
