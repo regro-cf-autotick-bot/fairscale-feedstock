@@ -45,15 +45,6 @@ requirements:
     - pytorch =*={{ torch_proc_type }}*
 
 test:
-  requires:
-    - pytest
-    - parameterized
-    - scikit-learn
-    - torchvision
-  source_files:
-    - tests
-  commands:
-    - pytest tests
   imports:
     - fairscale
     - fairscale.nn
@@ -63,6 +54,15 @@ test:
     - fairscale.nn.pipe.balance
     - fairscale.nn.pipe.skip
     - fairscale.optim
+  requires:
+    - pytest
+    - parameterized
+    - scikit-learn
+    - torchvision
+  source_files:
+    - tests
+  commands:
+    - pytest tests
 
 about:
   home: https://github.com/facebookresearch/fairscale
