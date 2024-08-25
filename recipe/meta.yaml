@@ -11,7 +11,7 @@ source:
   sha256: 0418cb5bb560e127764afa28578e3fc3679ba8afa31fee6b7447e5e3d39c8c4b
 
 build:
-  number: 1
+  number: 2
   # no pytorch on windows in conda-forge, see
   # https://github.com/conda-forge/pytorch-cpu-feedstock/issues/32
   skip: true  # [win]
@@ -25,9 +25,9 @@ requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - sysroot_linux-64 2.17                  # [linux]
     # compilers only needed for CUDA extensions
     - {{ compiler('cxx') }}                  # [cuda_compiler_version != "None"]
+    - {{ stdlib("c") }}                    # [cuda_compiler_version != "None"]
     - {{ compiler('cuda') }}                 # [cuda_compiler_version != "None"]
   host:
     - python
